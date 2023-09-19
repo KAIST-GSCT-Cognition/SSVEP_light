@@ -2,9 +2,21 @@
 
 This project is the repository for a project that classifies EEG signals for three visual stimuli. This repository provides information on models, datasets, and visualization related to the project.
 
-### Model
+### Preprocessing
 
-update soon
+```
+pip install -e .
+cd preprocessor
+python run.py
+```
+
+### Run Machine Learning
+
+```
+cd ssvl/svm
+python run.py --platform Sc
+python run.py --platform VR
+```
 
 ### Dataset
 
