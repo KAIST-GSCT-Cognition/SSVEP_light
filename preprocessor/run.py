@@ -20,6 +20,7 @@ LABEL_DICT = {
     0: "7hz",
     1: "10hz",
     2: "12hz",
+    3: "resting",
 }
 
 def welch_psd(channel_data, fs, lower_freq, high_freq):
@@ -28,6 +29,46 @@ def welch_psd(channel_data, fs, lower_freq, high_freq):
     channel_wise_psd = psd.T[subband_idx].mean(axis=0)
     return channel_wise_psd
 
+def preprocess(f_name, instance, save_name, is_resting):
+    data = np.load(os.path.join(DATASET_PATH, "npy", f_name + ".npy"))
+    data_dictionary = []
+    for label, label_data in enumerate(data):
+        hz = LABEL_DICT[label]
+        for trial, trial_data in enumerate(label_data):
+            if trial < 24:
+                split = "train"
+            elif 24 <= trial < 27:
+                split = "valid"
+            elif 27 <= trial:
+                split = "test"
+            else:
+                split = None
+            delta_psd = welch_psd(trial_data, SAMPLING_RATE, DELTA[0], DELTA[1])
+            theta_psd = welch_psd(trial_data, SAMPLING_RATE, THETA[0], THETA[1])
+            alpha_psd = welch_psd(trial_data, SAMPLING_RATE, ALPHA[0], ALPHA[1])
+            beta_psd = welch_psd(trial_data, SAMPLING_RATE, BETA[0], BETA[1])
+            gamma_psd = welch_psd(trial_data, SAMPLING_RATE, GAMMA[0], GAMMA[1])
+            feature = {
+                "waveform": trial_data,
+                "delta_psd": delta_psd,
+                "theta_psd": theta_psd,
+                "alpha_psd": alpha_psd,
+                "beta_psd": beta_psd,
+                "gamma_psd": gamma_psd,
+            }
+            data_dictionary.append({
+                "id": f"{save_name}_{trial}_{label}",
+                "pid": instance.pid,
+                "platform": instance.platform,
+                "area": instance.area,
+                "split": split,
+                "label": label,
+                "is_resting": is_resting,
+                "path": os.path.join("feature", save_name, hz, split, f"trial{trial}.pt")
+            })
+            os.makedirs(os.path.join(DATASET_PATH, "feature", save_name, hz, split), exist_ok=True)
+            torch.save(feature, os.path.join(DATASET_PATH, "feature", save_name, hz, split, f"trial{trial}.pt"))
+    return data_dictionary
 
 def main():
     df = pd.read_csv(os.path.join(DATASET_PATH, "metadata.csv"), index_col=0)
@@ -36,41 +77,15 @@ def main():
     for idx in range(len(df_target)):
         instance = df_target.iloc[idx]
         f_name = FNAME.format_map(instance)
+        resting_name = f_name[:-1] + "_Resting)"
         save_name = RENAME.format_map(instance)
-        data = np.load(os.path.join(DATASET_PATH, "npy", f_name + ".npy"))
-        for label, label_data in enumerate(data):
-            hz = LABEL_DICT[label]
-            for trial, trial_data in enumerate(label_data):
-                if trial < 24:
-                    split = "train"
-                elif 24 <= trial < 27:
-                    split = "valid"
-                elif 27 <= trial:
-                    split = "test"
-                delta_psd = welch_psd(trial_data, SAMPLING_RATE, DELTA[0], DELTA[1])
-                theta_psd = welch_psd(trial_data, SAMPLING_RATE, THETA[0], THETA[1])
-                alpha_psd = welch_psd(trial_data, SAMPLING_RATE, ALPHA[0], ALPHA[1])
-                beta_psd = welch_psd(trial_data, SAMPLING_RATE, BETA[0], BETA[1])
-                gamma_psd = welch_psd(trial_data, SAMPLING_RATE, GAMMA[0], GAMMA[1])
-                feature = {
-                    "waveform": trial_data,
-                    "delta_psd": delta_psd,
-                    "theta_psd": theta_psd,
-                    "alpha_psd": alpha_psd,
-                    "beta_psd": beta_psd,
-                    "gamma_psd": gamma_psd,
-                }
-                save_metadata[f"{save_name}_{trial}_{label}"]= {
-                    "id": f"{save_name}_{trial}_{label}",
-                    "pid": instance.pid,
-                    "platform": instance.platform,
-                    "area": instance.area,
-                    "split": split,
-                    "label": label,
-                    "path": os.path.join("feature", save_name, hz, split, f"trial{trial}.pt")
-                }
-                os.makedirs(os.path.join(DATASET_PATH, "feature", save_name, hz, split), exist_ok=True)
-                torch.save(feature, os.path.join(DATASET_PATH, "feature", save_name, hz, split, f"trial{trial}.pt"))
+        resting_save_name = save_name[:-1] + "_resting"
+        data_normal = preprocess(f_name, instance, save_name, is_resting=False)
+        data_resting = preprocess(resting_name, instance, resting_save_name, is_resting=True)
+        for i in data_normal:
+            save_metadata[i["id"]] = i
+        for i in data_resting:
+            save_metadata[i["id"]] = i
     with open(f"{DATASET_PATH}/feature_meta.json", mode="w") as io:
         json.dump(save_metadata, io, indent=4)
 
