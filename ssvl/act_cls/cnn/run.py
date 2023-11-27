@@ -15,14 +15,15 @@ parser = argparse.ArgumentParser(description='SSVEP')
 parser.add_argument("--dataset_path", default="../../../dataset", type=str)
 parser.add_argument("--feature_type", default="waveform", type=str)
 parser.add_argument("--platform", default="Sc", type=str)
-parser.add_argument("--pid", default="P01", type=str)
-parser.add_argument('-j', '--workers', default=12, type=int, metavar='N',
+parser.add_argument("--pid", default=None, type=str)
+parser.add_argument("--target_hz", default="12hz", type=str)
+parser.add_argument('-j', '--workers', default=24, type=int, metavar='N',
                     help='number of data loading workers')
-parser.add_argument('--warmup_steps', default=500, type=int, metavar='N',
+parser.add_argument('--warmup_steps', default=1000, type=int, metavar='N',
                     help='number of total epochs to run')
-parser.add_argument('--total_steps', default=1000, type=int, metavar='N',
+parser.add_argument('--total_steps', default=10000, type=int, metavar='N',
                     help='number of total epochs to run')
-parser.add_argument('-b', '--batch-size', default=16, type=int, metavar='N')
+parser.add_argument('-b', '--batch-size', default=8, type=int, metavar='N')
 parser.add_argument('--world-size', default=1, type=int,
                     help='number of nodes for distributed training')
 parser.add_argument('--lr', '--learning-rate', default=1e-4, type=float,
@@ -30,7 +31,7 @@ parser.add_argument('--lr', '--learning-rate', default=1e-4, type=float,
 parser.add_argument('--min_lr', default=1e-9, type=float)
 parser.add_argument('--seed', default=None, type=int,
                     help='seed for initializing training. ')
-parser.add_argument('--gpu', default=0, type=int,
+parser.add_argument('--gpu', default=1, type=int,
                     help='GPU id to use.')
 parser.add_argument('--print_freq', default=10, type=int)
 parser.add_argument("--cos", default=True, type=bool)
@@ -40,9 +41,9 @@ def main():
     main_worker(args)
 
 def main_worker(args):
-    tr_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type, platform=args.platform, pid=args.pid, split="train")
-    va_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type, platform=args.platform, pid=args.pid, split="valid")
-    te_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type,  platform=args.platform, pid=args.pid, split="test")
+    tr_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type, platform=args.platform, pid=args.pid, hz=args.target_hz, split="train")
+    va_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type, platform=args.platform, pid=args.pid, hz=args.target_hz, split="valid")
+    te_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type,  platform=args.platform, pid=args.pid, hz=args.target_hz, split="test")
     eval_sets = torch.utils.data.ConcatDataset([va_dataset, te_dataset])
     train_loader = torch.utils.data.DataLoader(
         tr_dataset, batch_size=args.batch_size, shuffle=True,
@@ -56,21 +57,26 @@ def main_worker(args):
     model = model.cuda(args.gpu)
     
     optimizer = torch.optim.AdamW(model.parameters(), args.lr)
-    save_dir = f"exp/{args.platform}_{args.pid}"
+    save_dir = f"exp/{args.platform}/{args.pid}_{args.target_hz}"
     args.epochs = args.total_steps // len(train_loader)  
     acc_metric = Accuracy(task="multiclass", num_classes=2)
 
     logger = Logger(save_dir)
-    save_hparams(args, save_dir)
-    best_acc = 0
+    best_tr, best_val = 0, 0
     for epoch in range(0, args.epochs):
         train_acc = train(train_loader, model, optimizer, epoch, logger, acc_metric, args)
         val_acc = eval(test_loader, model, acc_metric, args)
         print(f"epoch: {epoch}, train acc: {train_acc}, val acc: {val_acc}")
-        if val_acc > best_acc:
+        if val_acc > best_val:
+            best_val = val_acc
+            best_tr = train_acc
             torch.save({'epoch': epoch, 'state_dict': model.state_dict(), 'optimizer' : optimizer.state_dict()}, f'{save_dir}/best.pth')
-    torch.save({'epoch': epoch, 'state_dict': model.state_dict(), 'optimizer' : optimizer.state_dict()}, f'{save_dir}/last.pth')
-    print("We are at epoch:", epoch)
+        if train_acc - val_acc > 0.4: # early stopping
+            break
+    print(f"finish best acc is {best_val}")
+    args.best_val = float(best_val)
+    args.best_tr = float(best_tr)
+    save_hparams(args, save_dir)
 
 def train(train_loader, model, optimizer, epoch, logger, acc_metric, args):
     train_losses = AverageMeter('Train Loss', ':.4e')
@@ -108,7 +114,6 @@ def eval(test_loader, model, acc_metric, args):
             predict = model.inference(x)
         test_pred.append(predict.detach().cpu())
         test_gt.append(y)
-        print(predict.detach().cpu(), y)
     preds = torch.cat((test_pred))
     target = torch.cat(test_gt)
     return acc_metric(preds, target)

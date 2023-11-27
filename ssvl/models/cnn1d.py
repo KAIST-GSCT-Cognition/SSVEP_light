@@ -4,15 +4,15 @@ from .modules import Conv_1d
 import torch.nn.functional as F
 
 class CNN1D(nn.Module):
-    def __init__(self, in_channel=6, out_channel=32, n_class=3):
+    def __init__(self, in_channel=6, out_channel=8, n_class=3):
         super(CNN1D, self).__init__()
         self.layer1 = Conv_1d(in_channel, out_channel, shape=7, stride=7, pooling=1)
-        self.layer2 = Conv_1d(out_channel, out_channel, shape=3, stride=1, pooling=3)
-        self.layer3 = Conv_1d(out_channel, out_channel, shape=3, stride=1, pooling=3)
-        self.layer4 = Conv_1d(out_channel, out_channel, shape=3, stride=1, pooling=3)
-        self.layer5 = Conv_1d(out_channel, out_channel, shape=3, stride=1, pooling=3)
+        self.layer2 = Conv_1d(out_channel, out_channel*2, shape=3, stride=1, pooling=3)
+        self.layer3 = Conv_1d(out_channel*2, out_channel*4, shape=3, stride=1, pooling=3)
+        self.layer4 = Conv_1d(out_channel*4, out_channel*4, shape=3, stride=1, pooling=3)
+        self.layer5 = Conv_1d(out_channel*4, out_channel*8, shape=3, stride=1, pooling=3)
         self.dropout = nn.Dropout(0.1)
-        self.dense = nn.Linear(out_channel, n_class)
+        self.dense = nn.Linear(out_channel*8, n_class)
 
     def forward(self, x, y):
         x = self.layer1(x)        

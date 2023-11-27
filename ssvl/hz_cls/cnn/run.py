@@ -14,7 +14,7 @@ parser = argparse.ArgumentParser(description='SSVEP')
 parser.add_argument("--dataset_path", default="../../dataset", type=str)
 parser.add_argument("--feature_type", default="waveform", type=str)
 parser.add_argument("--platform", default="Sc", type=str)
-parser.add_argument("--pid", default="P01", type=str)
+parser.add_argument("--pid", default=None, type=str)
 parser.add_argument('-j', '--workers', default=12, type=int, metavar='N',
                     help='number of data loading workers')
 parser.add_argument('--warmup_steps', default=100, type=int, metavar='N',

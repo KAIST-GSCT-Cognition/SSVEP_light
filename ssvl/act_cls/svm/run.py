@@ -11,9 +11,9 @@ from ssvl.act_cls.dataset import SSVEP_LIGHT
 import json
 
 def get_dataset(args, pid):
-    tr_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type, platform=args.platform, pid=pid, split="train")
-    va_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type, platform=args.platform, pid=pid, split="valid")
-    te_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type,  platform=args.platform, pid=pid, split="test")
+    tr_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type, platform=args.platform, pid=pid, hz=args.target_hz, split="train")
+    va_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type, platform=args.platform, pid=pid, hz=args.target_hz, split="valid")
+    te_dataset = SSVEP_LIGHT(dataset_path=args.dataset_path, feature_type=args.feature_type,  platform=args.platform, pid=pid, hz=args.target_hz, split="test")
     train_set = tr_dataset
     eval_sets = torch.utils.data.ConcatDataset([va_dataset, te_dataset])
 
@@ -58,7 +58,7 @@ def main(args):
         "num_test": 0,
     }
 
-    with open(f"exp/{args.platform}_{args.feature_type}_results.json", mode="w") as io:
+    with open(f"exp/{args.platform}_{args.feature_type}_{args.target_hz}_results.json", mode="w") as io:
         json.dump(results, io, indent=4)
 
 
@@ -67,6 +67,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset_path", default="../../../dataset", type=str)
     parser.add_argument("--feature_type", default="psd", type=str)
     parser.add_argument("--platform", default="Sc", type=str)
+    parser.add_argument("--target_hz", default="12hz", type=str)
     # runner 
     args = parser.parse_args()
     main(args)
