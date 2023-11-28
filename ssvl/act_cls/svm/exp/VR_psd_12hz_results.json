@@ -6,20 +6,20 @@
         "num_test": 12
     },
     "P02": {
-        "test_score": 0.8333333333333334,
-        "train_score": 0.9791666666666666,
+        "test_score": 1.0,
+        "train_score": 1.0,
         "num_train": 48,
         "num_test": 12
     },
     "P04": {
-        "test_score": 0.75,
+        "test_score": 0.5833333333333334,
         "train_score": 0.9166666666666666,
         "num_train": 48,
         "num_test": 12
     },
     "P05": {
         "test_score": 0.5833333333333334,
-        "train_score": 0.8333333333333334,
+        "train_score": 0.8958333333333334,
         "num_train": 48,
         "num_test": 12
     },
@@ -31,13 +31,13 @@
     },
     "P07": {
         "test_score": 0.8333333333333334,
-        "train_score": 0.8125,
+        "train_score": 0.8333333333333334,
         "num_train": 48,
         "num_test": 12
     },
     "P08": {
         "test_score": 0.9166666666666666,
-        "train_score": 0.875,
+        "train_score": 0.9166666666666666,
         "num_train": 48,
         "num_test": 12
     },
@@ -49,25 +49,25 @@
     },
     "P10": {
         "test_score": 0.4166666666666667,
-        "train_score": 0.7916666666666666,
+        "train_score": 0.7708333333333334,
         "num_train": 48,
         "num_test": 12
     },
     "P11": {
-        "test_score": 0.3333333333333333,
-        "train_score": 0.8333333333333334,
+        "test_score": 0.25,
+        "train_score": 0.7916666666666666,
         "num_train": 48,
         "num_test": 12
     },
     "dependent": {
-        "test_score": 0.5606060606060606,
-        "train_score": 0.6590909090909091,
+        "test_score": 0.553030303030303,
+        "train_score": 0.6628787878787878,
         "num_train": 528,
         "num_test": 132
     },
     "fold10": {
-        "test_score": 0.7166666666666667,
-        "train_score": 0.8729166666666666,
+        "test_score": 0.7083333333333334,
+        "train_score": 0.88125,
         "num_train": 0,
         "num_test": 0
     }

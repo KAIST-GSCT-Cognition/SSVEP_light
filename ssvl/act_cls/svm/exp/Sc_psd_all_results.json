@@ -1,7 +1,7 @@
 {
     "P01": {
-        "test_score": 0.7222222222222222,
-        "train_score": 0.8958333333333334,
+        "test_score": 0.75,
+        "train_score": 0.8819444444444444,
         "num_train": 144,
         "num_test": 36
     },
@@ -13,30 +13,30 @@
     },
     "P04": {
         "test_score": 0.7777777777777778,
-        "train_score": 0.9375,
+        "train_score": 0.9444444444444444,
         "num_train": 144,
         "num_test": 36
     },
     "P05": {
-        "test_score": 0.6944444444444444,
-        "train_score": 0.8472222222222222,
+        "test_score": 0.8611111111111112,
+        "train_score": 0.8402777777777778,
         "num_train": 144,
         "num_test": 36
     },
     "P06": {
-        "test_score": 0.6111111111111112,
-        "train_score": 0.7013888888888888,
+        "test_score": 0.5833333333333334,
+        "train_score": 0.7222222222222222,
         "num_train": 144,
         "num_test": 36
     },
     "P07": {
-        "test_score": 0.6388888888888888,
-        "train_score": 0.9097222222222222,
+        "test_score": 0.6111111111111112,
+        "train_score": 0.9236111111111112,
         "num_train": 144,
         "num_test": 36
     },
     "P08": {
-        "test_score": 0.8611111111111112,
+        "test_score": 0.8888888888888888,
         "train_score": 0.875,
         "num_train": 144,
         "num_test": 36
@@ -55,19 +55,19 @@
     },
     "P11": {
         "test_score": 0.8055555555555556,
-        "train_score": 0.9236111111111112,
+        "train_score": 0.9375,
         "num_train": 144,
         "num_test": 36
     },
     "dependent": {
-        "test_score": 0.5,
+        "test_score": 0.49242424242424243,
         "train_score": 0.5025252525252525,
         "num_train": 1584,
         "num_test": 396
     },
     "fold10": {
-        "test_score": 0.6833333333333333,
-        "train_score": 0.798611111111111,
+        "test_score": 0.7000000000000001,
+        "train_score": 0.8020833333333334,
         "num_train": 0,
         "num_test": 0
     }

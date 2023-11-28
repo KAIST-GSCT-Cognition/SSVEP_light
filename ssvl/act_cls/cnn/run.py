@@ -19,14 +19,14 @@ parser.add_argument("--pid", default=None, type=str)
 parser.add_argument("--target_hz", default="12hz", type=str)
 parser.add_argument('-j', '--workers', default=24, type=int, metavar='N',
                     help='number of data loading workers')
-parser.add_argument('--warmup_steps', default=1000, type=int, metavar='N',
+parser.add_argument('--warmup_steps', default=50, type=int, metavar='N',
                     help='number of total epochs to run')
-parser.add_argument('--total_steps', default=10000, type=int, metavar='N',
+parser.add_argument('--total_steps', default=500, type=int, metavar='N',
                     help='number of total epochs to run')
 parser.add_argument('-b', '--batch-size', default=8, type=int, metavar='N')
 parser.add_argument('--world-size', default=1, type=int,
                     help='number of nodes for distributed training')
-parser.add_argument('--lr', '--learning-rate', default=1e-4, type=float,
+parser.add_argument('--lr', '--learning-rate', default=5e-5, type=float,
                     metavar='LR', help='initial learning rate', dest='lr')
 parser.add_argument('--min_lr', default=1e-9, type=float)
 parser.add_argument('--seed', default=None, type=int,
@@ -62,21 +62,24 @@ def main_worker(args):
     acc_metric = Accuracy(task="multiclass", num_classes=2)
 
     logger = Logger(save_dir)
-    best_tr, best_val = 0, 0
+    best_tr, best_val, early_stop = 0, 0, 0
     for epoch in range(0, args.epochs):
         train_acc = train(train_loader, model, optimizer, epoch, logger, acc_metric, args)
         val_acc = eval(test_loader, model, acc_metric, args)
         print(f"epoch: {epoch}, train acc: {train_acc}, val acc: {val_acc}")
         if val_acc > best_val:
+            early_stop = 0
             best_val = val_acc
             best_tr = train_acc
+            args.best_tr = float(best_tr)
+            args.best_val = float(best_val)
+            save_hparams(args, save_dir)
             torch.save({'epoch': epoch, 'state_dict': model.state_dict(), 'optimizer' : optimizer.state_dict()}, f'{save_dir}/best.pth')
-        if train_acc - val_acc > 0.4: # early stopping
+        else:
+            early_stop += 1
+        if early_stop > 30:
             break
     print(f"finish best acc is {best_val}")
-    args.best_val = float(best_val)
-    args.best_tr = float(best_tr)
-    save_hparams(args, save_dir)
 
 def train(train_loader, model, optimizer, epoch, logger, acc_metric, args):
     train_losses = AverageMeter('Train Loss', ':.4e')

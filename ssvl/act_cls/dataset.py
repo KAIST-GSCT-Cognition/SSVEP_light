@@ -55,7 +55,7 @@ class SSVEP_LIGHT(Dataset):
             features.append(data['theta_psd'])
             features.append(data['alpha_psd'])
             features.append(data['beta_psd'])
-            # features.append(data['gamma_psd'])
+            features.append(data['gamma_psd'])
             return np.hstack(features)
         else: 
             waveform = data['waveform'].astype(np.float32)

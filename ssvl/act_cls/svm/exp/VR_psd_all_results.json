@@ -1,25 +1,25 @@
 {
     "P01": {
-        "test_score": 0.9444444444444444,
+        "test_score": 0.9166666666666666,
         "train_score": 0.9513888888888888,
         "num_train": 144,
         "num_test": 36
     },
     "P02": {
-        "test_score": 0.8055555555555556,
-        "train_score": 0.7430555555555556,
+        "test_score": 0.8333333333333334,
+        "train_score": 0.7222222222222222,
         "num_train": 144,
         "num_test": 36
     },
     "P04": {
-        "test_score": 0.7222222222222222,
-        "train_score": 0.8611111111111112,
+        "test_score": 0.7777777777777778,
+        "train_score": 0.8541666666666666,
         "num_train": 144,
         "num_test": 36
     },
     "P05": {
-        "test_score": 0.5277777777777778,
-        "train_score": 0.7361111111111112,
+        "test_score": 0.5,
+        "train_score": 0.7638888888888888,
         "num_train": 144,
         "num_test": 36
     },
@@ -30,44 +30,44 @@
         "num_test": 36
     },
     "P07": {
-        "test_score": 0.7222222222222222,
-        "train_score": 0.7847222222222222,
+        "test_score": 0.6944444444444444,
+        "train_score": 0.7916666666666666,
         "num_train": 144,
         "num_test": 36
     },
     "P08": {
         "test_score": 0.8611111111111112,
-        "train_score": 0.8680555555555556,
+        "train_score": 0.8819444444444444,
         "num_train": 144,
         "num_test": 36
     },
     "P09": {
         "test_score": 0.8888888888888888,
-        "train_score": 0.9375,
+        "train_score": 0.9444444444444444,
         "num_train": 144,
         "num_test": 36
     },
     "P10": {
-        "test_score": 0.75,
-        "train_score": 0.7708333333333334,
+        "test_score": 0.7222222222222222,
+        "train_score": 0.7638888888888888,
         "num_train": 144,
         "num_test": 36
     },
     "P11": {
-        "test_score": 0.4722222222222222,
-        "train_score": 0.7222222222222222,
+        "test_score": 0.5,
+        "train_score": 0.75,
         "num_train": 144,
         "num_test": 36
     },
     "dependent": {
-        "test_score": 0.5681818181818182,
-        "train_score": 0.6268939393939394,
+        "test_score": 0.5833333333333334,
+        "train_score": 0.6332070707070707,
         "num_train": 1584,
         "num_test": 396
     },
     "fold10": {
         "test_score": 0.7416666666666667,
-        "train_score": 0.8125,
+        "train_score": 0.8173611111111111,
         "num_train": 0,
         "num_test": 0
     }
