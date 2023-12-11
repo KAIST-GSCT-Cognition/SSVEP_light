@@ -2,10 +2,15 @@
 
 This project is the repository for a project that classifies EEG signals for three visual stimuli. This repository provides information on models, datasets, and visualization related to the project.
 
-### Preprocessing
+### Installation
 
 ```
 pip install -e .
+```
+
+### Preprocessing
+
+```
 cd preprocessor
 python run.py
 ```
@@ -13,9 +18,15 @@ python run.py
 ### Run Machine Learning
 
 ```
-cd ssvl/svm
-python run.py --platform Sc
-python run.py --platform VR
+cd ssvl/act_cls/svm
+bash script.sh
+```
+
+### Run Deep Learning
+```
+cd ssvl/act_cls/cnn
+bash script.sh
+python results.py
 ```
 
 ### Dataset
@@ -25,7 +36,7 @@ This is an EEG signal dataset collected when 11 subjects were exposed to stimuli
 - Metadata 
     - area: All [default, 6 channel O+P], O (O Channels, 3), P (P Channels, 3)
     - platform: Sc (Screen, Traditional with High Acc), VR (Peripheral, Novel approach with weak stimuli than Sc)
-    - pid: ['P02', 'P01', 'P04', 'P05', 'P06', 'P07', 'P08', 'P09', 'P10', 'P11', 'P12']
+    - pid = ['P01', 'P02', 'P04', 'P05', 'P06', 'P07', 'P08', 'P09', 'P10','P11','P12','P13', 'P14', 'P15','P16','P17','P18','P20', None]
 
 - Data Shape: Label x Trial (30) x Channel (6) x Sample (4sec)
     - Labels: 3 class light hz, {7, 10, 12}
