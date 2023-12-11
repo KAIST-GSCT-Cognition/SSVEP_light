@@ -5,6 +5,7 @@ This project is the repository for a project that classifies EEG signals for thr
 ### Installation
 
 ```
+conda create -n p311 python=3.11
 pip install -e .
 ```
 
@@ -31,7 +32,7 @@ python results.py
 
 ### Dataset
 
-This is an EEG signal dataset collected when 11 subjects were exposed to stimuli for approximately 4 seconds. We collected information from two platforms: VR and SC. It is a dataset that includes EEG stimuli from a total of 6 channels-`occipital lobe`, `partietal lobe` (Oz, O1, O2, Pz, P3, P4).
+This is an EEG signal dataset collected when 18 subjects were exposed to stimuli for approximately 4 seconds. We collected information from two platforms: VR and SC. It is a dataset that includes EEG stimuli from a total of 6 channels-`occipital lobe`, `partietal lobe` (Oz, O1, O2, Pz, P3, P4).
 
 - Metadata 
     - area: All [default, 6 channel O+P], O (O Channels, 3), P (P Channels, 3)
