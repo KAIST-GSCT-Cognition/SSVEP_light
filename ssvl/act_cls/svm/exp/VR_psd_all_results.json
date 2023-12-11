@@ -1,121 +1,121 @@
 {
     "P01": {
-        "test_score": 0.8888888888888888,
-        "train_score": 0.9652777777777778,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.8611111111111112,
+        "train_score": 0.9444444444444444,
+        "num_train": 288,
+        "num_test": 72
     },
     "P02": {
-        "test_score": 0.8055555555555556,
-        "train_score": 0.9097222222222222,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.7777777777777778,
+        "train_score": 0.8715277777777778,
+        "num_train": 288,
+        "num_test": 72
     },
     "P04": {
-        "test_score": 0.5277777777777778,
-        "train_score": 0.7013888888888888,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.5694444444444444,
+        "train_score": 0.7847222222222222,
+        "num_train": 288,
+        "num_test": 72
     },
     "P05": {
-        "test_score": 0.5555555555555556,
-        "train_score": 0.8680555555555556,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.5833333333333334,
+        "train_score": 0.8576388888888888,
+        "num_train": 288,
+        "num_test": 72
     },
     "P06": {
-        "test_score": 0.7222222222222222,
-        "train_score": 0.7916666666666666,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.7083333333333334,
+        "train_score": 0.7986111111111112,
+        "num_train": 288,
+        "num_test": 72
     },
     "P07": {
-        "test_score": 0.5277777777777778,
-        "train_score": 0.75,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.5416666666666666,
+        "train_score": 0.7534722222222222,
+        "num_train": 288,
+        "num_test": 72
     },
     "P08": {
-        "test_score": 0.8333333333333334,
-        "train_score": 0.8194444444444444,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.8055555555555556,
+        "train_score": 0.84375,
+        "num_train": 288,
+        "num_test": 72
     },
     "P09": {
-        "test_score": 0.7777777777777778,
-        "train_score": 0.9652777777777778,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.7083333333333334,
+        "train_score": 0.9340277777777778,
+        "num_train": 288,
+        "num_test": 72
     },
     "P10": {
-        "test_score": 0.5833333333333334,
-        "train_score": 0.8888888888888888,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.5972222222222222,
+        "train_score": 0.8333333333333334,
+        "num_train": 288,
+        "num_test": 72
     },
     "P11": {
-        "test_score": 0.4166666666666667,
-        "train_score": 0.8541666666666666,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.4722222222222222,
+        "train_score": 0.8090277777777778,
+        "num_train": 288,
+        "num_test": 72
     },
     "P12": {
-        "test_score": 0.6944444444444444,
-        "train_score": 0.7847222222222222,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.7222222222222222,
+        "train_score": 0.7777777777777778,
+        "num_train": 288,
+        "num_test": 72
     },
     "P13": {
-        "test_score": 0.9444444444444444,
-        "train_score": 0.9513888888888888,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.9027777777777778,
+        "train_score": 0.8993055555555556,
+        "num_train": 288,
+        "num_test": 72
     },
     "P14": {
-        "test_score": 0.9444444444444444,
-        "train_score": 0.9722222222222222,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.8611111111111112,
+        "train_score": 0.9618055555555556,
+        "num_train": 288,
+        "num_test": 72
     },
     "P15": {
         "test_score": 0.8888888888888888,
-        "train_score": 0.9930555555555556,
-        "num_train": 144,
-        "num_test": 36
+        "train_score": 0.96875,
+        "num_train": 288,
+        "num_test": 72
     },
     "P16": {
-        "test_score": 0.7777777777777778,
-        "train_score": 0.9513888888888888,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.8194444444444444,
+        "train_score": 0.8993055555555556,
+        "num_train": 288,
+        "num_test": 72
     },
     "P17": {
-        "test_score": 0.8611111111111112,
-        "train_score": 0.875,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.8055555555555556,
+        "train_score": 0.8576388888888888,
+        "num_train": 288,
+        "num_test": 72
     },
     "P18": {
-        "test_score": 0.5833333333333334,
-        "train_score": 0.8611111111111112,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.4444444444444444,
+        "train_score": 0.8402777777777778,
+        "num_train": 288,
+        "num_test": 72
     },
     "P20": {
-        "test_score": 0.9444444444444444,
-        "train_score": 1.0,
-        "num_train": 144,
-        "num_test": 36
+        "test_score": 0.8888888888888888,
+        "train_score": 0.9895833333333334,
+        "num_train": 288,
+        "num_test": 72
     },
     "dependent": {
-        "test_score": 0.6944444444444444,
-        "train_score": 0.7650462962962963,
-        "num_train": 2592,
-        "num_test": 648
+        "test_score": 0.6797839506172839,
+        "train_score": 0.7411265432098766,
+        "num_train": 5184,
+        "num_test": 1296
     },
     "fold10": {
-        "test_score": 0.7376543209876544,
-        "train_score": 0.8834876543209876,
+        "test_score": 0.7199074074074074,
+        "train_score": 0.8680555555555557,
         "num_train": 0,
         "num_test": 0
     }

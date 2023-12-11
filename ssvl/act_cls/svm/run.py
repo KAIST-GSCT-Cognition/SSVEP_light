@@ -52,7 +52,7 @@ def main(args):
     
     train_10fold = np.mean([v["train_score"] for k,v in results.items() if k != "dependent"] )
     test_10fold = np.mean([v["test_score"] for k,v in results.items() if k != "dependent"] )
-    results["fold10"] = {
+    results["fold_wise"] = {
         "test_score": test_10fold,
         "train_score": train_10fold,
         "num_train": 0,
