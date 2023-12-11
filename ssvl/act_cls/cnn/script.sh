@@ -1,98 +1,20 @@
-# python run.py --platform Sc --target_hz 7hz --pid P01
-# python run.py --platform VR --target_hz 7hz --pid P01
-# python run.py --platform Sc --target_hz 10hz --pid P01
-# python run.py --platform VR --target_hz 10hz --pid P01
-# python run.py --platform Sc --target_hz 12hz --pid P01
-# python run.py --platform VR --target_hz 12hz --pid P01
-# python run.py --platform Sc --target_hz all --pid P01
-# python run.py --platform VR --target_hz all --pid P01
+for PID in 'P01' 'P02' 'P04' 'P05' 'P06' 'P07' 'P08' 'P09' 'P10' 'P11' 'P12' 'P13' 'P14' 'P15' 'P16' 'P17' 'P18' 'P20';
+  do
+    python run.py --platform Sc --target_hz 7hz --pid $PID
+    python run.py --platform VR --target_hz 7hz --pid $PID
+    python run.py --platform Sc --target_hz 10hz --pid $PID
+    python run.py --platform VR --target_hz 10hz --pid $PID
+    python run.py --platform Sc --target_hz 12hz --pid $PID
+    python run.py --platform VR --target_hz 12hz --pid $PID
+    python run.py --platform Sc --target_hz all --pid $PID
+    python run.py --platform VR --target_hz all --pid $PID
+  done
 
-# python run.py --platform Sc --target_hz 7hz --pid P02
-# python run.py --platform VR --target_hz 7hz --pid P02
-# python run.py --platform Sc --target_hz 10hz --pid P02
-# python run.py --platform VR --target_hz 10hz --pid P02
-# python run.py --platform Sc --target_hz 12hz --pid P02
-# python run.py --platform VR --target_hz 12hz --pid P02
-# python run.py --platform Sc --target_hz all --pid P02
-# python run.py --platform VR --target_hz all --pid P02
-
-# python run.py --platform Sc --target_hz 7hz --pid P04
-# python run.py --platform VR --target_hz 7hz --pid P04
-# python run.py --platform Sc --target_hz 10hz --pid P04
-# python run.py --platform VR --target_hz 10hz --pid P04
-# python run.py --platform Sc --target_hz 12hz --pid P04
-# python run.py --platform VR --target_hz 12hz --pid P04
-# python run.py --platform Sc --target_hz all --pid P04
-# python run.py --platform VR --target_hz all --pid P04
-
-# python run.py --platform Sc --target_hz 7hz --pid P05
-# python run.py --platform VR --target_hz 7hz --pid P05
-# python run.py --platform Sc --target_hz 10hz --pid P05
-# python run.py --platform VR --target_hz 10hz --pid P05
-# python run.py --platform Sc --target_hz 12hz --pid P05
-# python run.py --platform VR --target_hz 12hz --pid P05
-# python run.py --platform Sc --target_hz all --pid P05
-# python run.py --platform VR --target_hz all --pid P05
-
-# python run.py --platform Sc --target_hz 7hz --pid P06
-# python run.py --platform VR --target_hz 7hz --pid P06
-# python run.py --platform Sc --target_hz 10hz --pid P06
-# python run.py --platform VR --target_hz 10hz --pid P06
-# python run.py --platform Sc --target_hz 12hz --pid P06
-# python run.py --platform VR --target_hz 12hz --pid P06
-# python run.py --platform Sc --target_hz all --pid P06
-# python run.py --platform VR --target_hz all --pid P06
-
-# python run.py --platform Sc --target_hz 7hz --pid P07
-# python run.py --platform VR --target_hz 7hz --pid P07
-# python run.py --platform Sc --target_hz 10hz --pid P07
-# python run.py --platform VR --target_hz 10hz --pid P07
-# python run.py --platform Sc --target_hz 12hz --pid P07
-# python run.py --platform VR --target_hz 12hz --pid P07
-# python run.py --platform Sc --target_hz all --pid P07
-# python run.py --platform VR --target_hz all --pid P07
-
-# python run.py --platform Sc --target_hz 7hz --pid P08
-# python run.py --platform VR --target_hz 7hz --pid P08
-# python run.py --platform Sc --target_hz 10hz --pid P08
-# python run.py --platform VR --target_hz 10hz --pid P08
-# python run.py --platform Sc --target_hz 12hz --pid P08
-# python run.py --platform VR --target_hz 12hz --pid P08
-# python run.py --platform Sc --target_hz all --pid P08
-# python run.py --platform VR --target_hz all --pid P08
-
-# python run.py --platform Sc --target_hz 7hz --pid P09
-# python run.py --platform VR --target_hz 7hz --pid P09
-# python run.py --platform Sc --target_hz 10hz --pid P09
-# python run.py --platform VR --target_hz 10hz --pid P09
-# python run.py --platform Sc --target_hz 12hz --pid P09
-# python run.py --platform VR --target_hz 12hz --pid P09
-# python run.py --platform Sc --target_hz all --pid P09
-# python run.py --platform VR --target_hz all --pid P09
-
-# python run.py --platform Sc --target_hz 7hz --pid P10
-# python run.py --platform VR --target_hz 7hz --pid P10
-# python run.py --platform Sc --target_hz 10hz --pid P10
-# python run.py --platform VR --target_hz 10hz --pid P10
-# python run.py --platform Sc --target_hz 12hz --pid P10
-# python run.py --platform VR --target_hz 12hz --pid P10
-# python run.py --platform Sc --target_hz all --pid P10
-# python run.py --platform VR --target_hz all --pid P10
-
-# python run.py --platform Sc --target_hz 7hz --pid P11
-# python run.py --platform VR --target_hz 7hz --pid P11
-# python run.py --platform Sc --target_hz 10hz --pid P11
-# python run.py --platform VR --target_hz 10hz --pid P11
-# python run.py --platform Sc --target_hz 12hz --pid P11
-# python run.py --platform VR --target_hz 12hz --pid P11
-# python run.py --platform Sc --target_hz all --pid P11
-# python run.py --platform VR --target_hz all --pid P11
-
-python run.py --platform Sc --target_hz 7hz --total_steps 10000
-python run.py --platform VR --target_hz 7hz --total_steps 10000
-python run.py --platform Sc --target_hz 10hz --total_steps 10000
-python run.py --platform VR --target_hz 10hz --total_steps 10000
-python run.py --platform Sc --target_hz 12hz --total_steps 10000
-python run.py --platform VR --target_hz 12hz --total_steps 10000
-python run.py --platform Sc --target_hz all --total_steps 10000
-python run.py --platform VR --target_hz all --total_steps 10000
+python run.py --platform Sc --target_hz 7hz --epochs 50
+python run.py --platform VR --target_hz 7hz --epochs 50
+python run.py --platform Sc --target_hz 10hz --epochs 50
+python run.py --platform VR --target_hz 10hz --epochs 50
+python run.py --platform Sc --target_hz 12hz --epochs 50
+python run.py --platform VR --target_hz 12hz --epochs 50
+python run.py --platform Sc --target_hz all --epochs 50
+python run.py --platform VR --target_hz all --epochs 50

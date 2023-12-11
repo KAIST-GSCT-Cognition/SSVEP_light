@@ -2,22 +2,12 @@ import os
 import json
 import numpy as np
 from omegaconf import DictConfig, OmegaConf
-"""
-target format
-{
-    "P01": {
-        "test_score": 0.8333333333333334,
-        "train_score": 0.8333333333333334,
-        "num_train": 48,
-        "num_test": 12
-    },
-    ....
-"""
 results = {}
 for platform in ["VR", "Sc"]:
     for hz in ["7hz", "10hz", "12hz", "all"]:
         trs, vas = [], []
-        for pid in ["P01", "P02", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11", "None"]:
+        pids = ['P01', 'P02', 'P04', 'P05', 'P06', 'P07', 'P08', 'P09', 'P10','P11','P12','P13', 'P14', 'P15','P16','P17','P18','P20', None]
+        for pid in pids:
             config = OmegaConf.load(f"./exp/{platform}/{pid}_{hz}/hparams.yaml")
             if pid == "None":
                 pid = "dependent"

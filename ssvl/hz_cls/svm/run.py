@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
-from ssvl.dataset import SSVEP_LIGHT
+from ssvl.hz_cls.dataset import SSVEP_LIGHT
 import json
 
 
@@ -39,7 +39,8 @@ def get_dataset(args, pid):
 
 def main(args):
     results = {}
-    for pid in ["P01", "P02", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11", None]:
+    pids = ['P01', 'P02', 'P04', 'P05', 'P06', 'P07', 'P08', 'P09', 'P10','P11','P12','P13', 'P14', 'P15','P16','P17','P18','P20', None]
+    for pid in pids:
         tr_x, tr_y, te_x, te_y = get_dataset(args, pid)
         if pid == None:
             pid = "dependent"
@@ -51,7 +52,6 @@ def main(args):
 
         predictions = classifier.predict(te_x)
         test_score = accuracy_score(te_y, predictions)
-        # save_cm(predictions, te_y, f"./exp/{args.platform}_{pid}_cm.png", label_name=["7hz", "10hz", "12hz"])
         results[pid] = {
             "test_score": test_score,
             "train_score": train_score,
@@ -74,7 +74,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("--dataset_path", default="../../dataset", type=str)
+    parser.add_argument("--dataset_path", default="../../../dataset", type=str)
     parser.add_argument("--feature_type", default="psd", type=str)
     parser.add_argument("--platform", default="Sc", type=str)
     # runner 

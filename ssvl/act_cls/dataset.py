@@ -45,7 +45,6 @@ class SSVEP_LIGHT(Dataset):
             self.fl = [v for k,v in self.metadata.items() if v["split"] == "valid"]
         elif self.split == "test":
             self.fl = [v for k,v in self.metadata.items() if v["split"] == "test"]
-        print(len(self.fl))
 
     def load_data(self, item):
         data = torch.load(os.path.join(self.dataset_path, item['path']))
@@ -58,7 +57,7 @@ class SSVEP_LIGHT(Dataset):
             features.append(data['gamma_psd'])
             return np.hstack(features)
         else: 
-            waveform = data['waveform'].astype(np.float32)
+            waveform = np.array(data['waveform']).astype(np.float32)
             waveform = torch.from_numpy(waveform)
             return waveform
 

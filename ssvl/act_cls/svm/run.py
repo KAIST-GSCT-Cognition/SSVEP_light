@@ -30,7 +30,8 @@ def get_dataset(args, pid):
 
 def main(args):
     results = {}
-    for pid in ["P01", "P02", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11", None]:
+    pids = ['P01', 'P02', 'P04', 'P05', 'P06', 'P07', 'P08', 'P09', 'P10','P11','P12','P13', 'P14', 'P15','P16','P17','P18','P20', None]
+    for pid in pids:
         tr_x, tr_y, te_x, te_y = get_dataset(args, pid)
         if pid == None:
             pid = "dependent"
@@ -57,7 +58,7 @@ def main(args):
         "num_train": 0,
         "num_test": 0,
     }
-
+    os.makedirs("exp", exist_ok=True)
     with open(f"exp/{args.platform}_{args.feature_type}_{args.target_hz}_results.json", mode="w") as io:
         json.dump(results, io, indent=4)
 

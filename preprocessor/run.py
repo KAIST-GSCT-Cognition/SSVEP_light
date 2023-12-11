@@ -29,12 +29,21 @@ def welch_psd(channel_data, fs, lower_freq, high_freq):
     channel_wise_psd = psd.T[subband_idx].mean(axis=0)
     return channel_wise_psd
 
+def channel_wise_norm(trial_data):
+    norm_waveform = []
+    for waveform in trial_data:
+        waveform = (waveform - waveform.min()) / (waveform.max() - waveform.min())
+        norm_waveform.append(waveform)
+    return norm_waveform
+    
 def preprocess(f_name, instance, save_name, is_resting):
+    # 3 x 30 x 6 x 1025 == label x trial x channel x 
     data = np.load(os.path.join(DATASET_PATH, "npy", f_name + ".npy"))
     data_dictionary = []
     for label, label_data in enumerate(data):
         hz = LABEL_DICT[label]
         for trial, trial_data in enumerate(label_data):
+            trial_data = channel_wise_norm(trial_data) # normalization
             if trial < 24:
                 split = "train"
             elif 24 <= trial < 27:
