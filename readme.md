@@ -48,3 +48,7 @@ This is an EEG signal dataset collected when 18 subjects were exposed to stimuli
 ### Visualization
 
 - check `notebook`
+
+### Result
+
+- https://docs.google.com/spreadsheets/d/1o2bTTORtQBK4gfj3CAd128hrnZp8jDulRXEr-OfJ6cU/edit?usp=sharing
