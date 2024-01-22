@@ -4,3 +4,5 @@ feature/
 __pycache__
 .ipynb_checkpoints
 ssvl.egg-info/
+*.pth
+events.out.tfevents.*

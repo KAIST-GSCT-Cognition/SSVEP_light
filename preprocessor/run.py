@@ -48,15 +48,6 @@ def preprocess(f_name, instance, save_name, is_resting):
     for label, label_data in enumerate(data):
         hz = LABEL_DICT[label]
         for trial, trial_data in enumerate(label_data):
-            if trial < 24:
-                split = "train"
-            elif 24 <= trial < 27:
-                split = "valid"
-            elif 27 <= trial:
-                split = "test"
-            else:
-                split = None
-            
             target_length = int(SAMPLING_RATE * INPUT_SECOND) 
             num_of_chunk = DATA_LEGNTH // target_length
             for chunk_idx in range(num_of_chunk):
@@ -82,13 +73,13 @@ def preprocess(f_name, instance, save_name, is_resting):
                     "chunk_idx": chunk_idx,
                     "platform": instance.platform,
                     "area": instance.area,
-                    "split": split,
                     "label": label,
+                    "trial": trial,
                     "is_resting": is_resting,
-                    "path": os.path.join("feature", save_name, hz, split, f"trial{trial}{chunk_idx}.pt")
+                    "path": os.path.join("feature", save_name, hz, f"trial{trial}{chunk_idx}.pt")
                 })
-                os.makedirs(os.path.join(DATASET_PATH, "feature", save_name, hz, split), exist_ok=True)
-                torch.save(feature, os.path.join(DATASET_PATH, "feature", save_name, hz, split, f"trial{trial}{chunk_idx}.pt"))
+                os.makedirs(os.path.join(DATASET_PATH, "feature", save_name, hz), exist_ok=True)
+                torch.save(feature, os.path.join(DATASET_PATH, "feature", save_name, hz, f"trial{trial}{chunk_idx}.pt"))
     return data_dictionary
 
 def main():

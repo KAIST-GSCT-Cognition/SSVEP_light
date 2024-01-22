@@ -1,0 +1,132 @@
+{
+    "P01_test_fold": {
+        "test_score": 0.5583333333333333,
+        "train_score": 0.7642156862745098,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P01"
+    },
+    "P02_test_fold": {
+        "test_score": 0.575,
+        "train_score": 0.7568627450980392,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P02"
+    },
+    "P04_test_fold": {
+        "test_score": 0.5,
+        "train_score": 0.7661764705882353,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P04"
+    },
+    "P05_test_fold": {
+        "test_score": 0.49166666666666664,
+        "train_score": 0.7578431372549019,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P05"
+    },
+    "P06_test_fold": {
+        "test_score": 0.65,
+        "train_score": 0.7583333333333333,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P06"
+    },
+    "P07_test_fold": {
+        "test_score": 0.4583333333333333,
+        "train_score": 0.7676470588235295,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P07"
+    },
+    "P08_test_fold": {
+        "test_score": 0.6166666666666667,
+        "train_score": 0.7612745098039215,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P08"
+    },
+    "P09_test_fold": {
+        "test_score": 0.75,
+        "train_score": 0.7598039215686274,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P09"
+    },
+    "P10_test_fold": {
+        "test_score": 0.525,
+        "train_score": 0.7602941176470588,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P10"
+    },
+    "P11_test_fold": {
+        "test_score": 0.5416666666666666,
+        "train_score": 0.763235294117647,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P11"
+    },
+    "P12_test_fold": {
+        "test_score": 0.5916666666666667,
+        "train_score": 0.7671568627450981,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P12"
+    },
+    "P13_test_fold": {
+        "test_score": 0.675,
+        "train_score": 0.7524509803921569,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P13"
+    },
+    "P14_test_fold": {
+        "test_score": 0.7333333333333333,
+        "train_score": 0.7514705882352941,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P14"
+    },
+    "P15_test_fold": {
+        "test_score": 0.5333333333333333,
+        "train_score": 0.7607843137254902,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P15"
+    },
+    "P16_test_fold": {
+        "test_score": 0.5666666666666667,
+        "train_score": 0.763235294117647,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P16"
+    },
+    "P17_test_fold": {
+        "test_score": 0.55,
+        "train_score": 0.7558823529411764,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P17"
+    },
+    "P18_test_fold": {
+        "test_score": 0.575,
+        "train_score": 0.7578431372549019,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P18"
+    },
+    "P20_test_fold": {
+        "test_score": 0.6916666666666667,
+        "train_score": 0.7514705882352941,
+        "num_train": 2040,
+        "num_test": 120,
+        "pid": "P20"
+    },
+    "score": {
+        "avg_train": 0.759776688453159,
+        "avg_test": 0.5879629629629629
+    }
+}

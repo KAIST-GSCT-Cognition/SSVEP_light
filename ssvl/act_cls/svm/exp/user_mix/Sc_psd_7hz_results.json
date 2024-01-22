@@ -1,0 +1,36 @@
+{
+    "fold0": {
+        "test_score": 0.7615740740740741,
+        "train_score": 0.8165509259259259,
+        "num_train": 1728,
+        "num_test": 432
+    },
+    "fold1": {
+        "test_score": 0.7384259259259259,
+        "train_score": 0.8356481481481481,
+        "num_train": 1728,
+        "num_test": 432
+    },
+    "fold2": {
+        "test_score": 0.7129629629629629,
+        "train_score": 0.8408564814814815,
+        "num_train": 1728,
+        "num_test": 432
+    },
+    "fold3": {
+        "test_score": 0.7569444444444444,
+        "train_score": 0.8258101851851852,
+        "num_train": 1728,
+        "num_test": 432
+    },
+    "fold4": {
+        "test_score": 0.7569444444444444,
+        "train_score": 0.828125,
+        "num_train": 1728,
+        "num_test": 432
+    },
+    "score": {
+        "avg_train": 0.829398148148148,
+        "avg_test": 0.7453703703703705
+    }
+}
